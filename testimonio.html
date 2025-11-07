@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="fonts/AstroSpace-eZ2Bg.ttf">
+    <link rel="stylesheet" href="fonts/Outfit-VariableFont_wght.ttf">
+    <title>Testimonio de clientes - Elián Rodríguez Diseño</title>
+</head>
+<body>
+
+<!-- Barra de Navegación -->
+<nav class="navbar custom-navbar">
+    <a class="navbar-brand" href="index.html"><img src="img/ERDIsologoBlackBack.png" alt="Logo" class="logo-img">Elián Rodríguez Diseño</a>
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="nosotros.html">Nosotros</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="portafolio.html">Portafolio de Servicios</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link active" href="testimonio.html">Testimonio de clientes</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="contactanos.html">Contáctanos</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">Redes Sociales</a>
+        </li>
+    </ul>
+        <button class="menu-toggle" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+</nav>
+
+<!-- contenido -->
+<div class="container">
+    <div class="content-container">
+        
+    <!-- Sección de Noticias -->
+    <h2>Testimonios de clientes</h2>
+            <div class="news-container">
+                <div class="news-item">
+                    <div class="news-image-container">
+                        <img src="img/Elivanders1.png" class="news-img" alt="Edición de video">
+                    </div>
+                    <div class="news-content">
+                        <h5 class="news-title">Elivander´s Wand Shop</h5>
+                        <p class="news-text"><b>Creación de varitas con diseño único</b></p>
+                        <div class="extra-info" id="info1">
+                            <p class="news-text">
+                                Ofrecemos edición profesional de video para proyectos comerciales, corporativos o personales. 
+                                Trabajamos con corrección de color, efectos visuales, motion graphics y montaje narrativo 
+                                para transmitir el mensaje de manera clara y atractiva. Nuestro flujo de trabajo asegura 
+                                resultados de alta calidad, adaptados a las necesidades de cada cliente.
+                            </p>
+                            <img src="img/Elivanders2.jpg" class="extra-img" alt="Edición de video profesional">
+                            <img src="img/Elivanders3.jpeg" class="extra-img" alt="Postproducción audiovisual">
+                            <a href="contactanos.html">
+                                <p class="indicative">¿Interesado en una producción profesional? Visita la sección <b>"Contáctanos"</b>.</p>
+                            </a>
+                        </div>
+                        <button class="btn btn-primary" onclick="toggleExtraInfo('info1')">Leer más</button>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-image-container">
+                        <img src="img/EliangoCustomPNG-02.png" class="news-img" alt="Producción de audio">
+                    </div>
+                    <div class="news-content">
+                        <h5 class="news-title">Eliango´s Custom</h5>
+                        <p class="news-text"><b>Customización, Reesculpido y replanteamiento</b></p>
+                        <div class="extra-info" id="info2">
+                            <p class="news-text">
+                                Creamos paisajes sonoros, grabaciones limpias y mezclas equilibradas que dan vida a tu proyecto. 
+                                Realizamos grabación, edición, masterización y restauración de audio para videos, podcasts, 
+                                publicidad y animación. Nuestro objetivo es ofrecer una experiencia auditiva envolvente 
+                                y profesional.
+                            </p>
+                            <img src="img/Eliangos2.png" class="extra-img" alt="Estudio de grabación">
+                            <img src="img/Eliangos3.png" class="extra-img" alt="Producción de sonido profesional">
+                            <a href="contactanos.html">
+                                <p class="indicative">Consulta más sobre este servicio en <b>"Contáctanos"</b>.</p>
+                            </a>
+                        </div>
+                        <button class="btn btn-primary" onclick="toggleExtraInfo('info2')">Leer más</button>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-image-container">
+                        <img src="img/Ejercito1.png" class="news-img" alt="Producción de audio">
+                    </div>
+                    <div class="news-content">
+                        <h5 class="news-title">La Ejército Basketball</h5>
+                        <p class="news-text"><b>Videógrafo de acción, Editor de video y Community Manager</b></p>
+                        <div class="extra-info" id="info3">
+                            <p class="news-text">
+                                Creamos paisajes sonoros, grabaciones limpias y mezclas equilibradas que dan vida a tu proyecto. 
+                                Realizamos grabación, edición, masterización y restauración de audio para videos, podcasts, 
+                                publicidad y animación. Nuestro objetivo es ofrecer una experiencia auditiva envolvente 
+                                y profesional.
+                            </p>
+                            <img src="img/Ejercito2.png" class="extra-img" alt="Estudio de grabación">
+                            <img src="img/Ejercito3.png" class="extra-img" alt="Producción de sonido profesional">
+                            <a href="contactanos.html">
+                                <p class="indicative">Consulta más sobre este servicio en <b>"Contáctanos"</b>.</p>
+                            </a>
+                        </div>
+                        <button class="btn btn-primary" onclick="toggleExtraInfo('info3')">Leer más</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer-custom">
+    <div class="container">
+        <div class="row">
+            <!-- Redes Sociales -->
+            <div class="col">
+                <h5>Redes Sociales</h5>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="https://www.linkedin.com/in/elian-rodriguez-544786384/">
+                            <img src="img/social_LinkedIn.png" alt="LinkedIn">
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/erdz.designs/">
+                            <img src="img/social_instagram.png" alt="Instagram">
+                            Instagram
+                        </a>
+                    </li>
+                </ul>
+                <ul class="footer-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="nosotros.html">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="portafolio.html">Portafolio de Servicios</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="testimonio.html">Testimonio de clientes</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contactanos.html">Contáctanos</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Leyenda -->
+        <div class="row">
+            <div class="col text-center">
+                <p>2025 Elián Rodríguez Diseño</p>
+            </div>
+        </div>
+    </div>
+    <br>
+</footer>
+
+<script src="js/scripts.js"></script>
+</body>
+</html>

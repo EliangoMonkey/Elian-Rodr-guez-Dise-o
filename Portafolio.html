@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="fonts/AstroSpace-eZ2Bg.ttf">
+    <link rel="stylesheet" href="fonts/Outfit-VariableFont_wght.ttf">
+    <title>Portafolio de servicios - Elián Rodríguez Diseño</title>
+</head>
+<body>
+
+<!-- Barra de Navegación -->
+<nav class="navbar custom-navbar">
+    <a class="navbar-brand" href="index.html"><img src="img/ERDIsologoBlackBack.png" alt="Logo" class="logo-img">Elián Rodríguez Diseño</a>
+
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="nosotros.html">Nosotros</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="portafolio.html">Portafolio de Servicios</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="testimonio.html">Testimonio de clientes</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="contactanos.html">Contáctanos</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="index.html">Redes Sociales</a>
+        </li>
+    </ul>
+        <button class="menu-toggle" aria-label="Abrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+</nav>
+
+<div class="container">
+    <div class="content-container">
+        
+    <!-- Sección de Noticias -->
+    <h2>Portafolio de servicios</h2>
+            <div class="news-container">
+                <div class="news-item">
+                    <div class="news-image-container">
+                        <img src="img/Screenshot 2025-11-07 091505.png" class="news-img" alt="Edición de video">
+                    </div>
+                    <div class="news-content">
+                        <h5 class="news-title">Edición y producción de video</h5>
+                        <p class="news-text"><b>Transformamos tus ideas en contenido visual de impacto.</b></p>
+                        <div class="extra-info" id="info1">
+                            <p class="news-text">
+                                Ofrecemos edición profesional de video para proyectos comerciales, corporativos o personales. 
+                                Trabajamos con corrección de color, efectos visuales, motion graphics y montaje narrativo 
+                                para transmitir el mensaje de manera clara y atractiva. Nuestro flujo de trabajo asegura 
+                                resultados de alta calidad, adaptados a las necesidades de cada cliente.
+                            </p>
+                            <img src="img/Screenshot 2025-11-07 091505.png" class="extra-img" alt="Edición de video profesional">
+                            <img src="img/Screenshot 2025-11-07 091417.png" class="extra-img" alt="Postproducción audiovisual">
+                            <a href="contactanos.html">
+                                <p class="indicative">¿Interesado en una producción profesional? Visita la sección <b>"Contáctanos"</b>.</p>
+                            </a>
+                        </div>
+                        <button class="btn btn-primary" onclick="toggleExtraInfo('info1')">Leer más</button>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-image-container">
+                        <img src="img/ScreenshotAudEd.png" class="news-img" alt="Producción de audio">
+                    </div>
+                    <div class="news-content">
+                        <h5 class="news-title">Edición y producción de audio</h5>
+                        <p class="news-text"><b>Audio profesional para potenciar tu contenido audiovisual.</b></p>
+                        <div class="extra-info" id="info2">
+                            <p class="news-text">
+                                Creamos paisajes sonoros, grabaciones limpias y mezclas equilibradas que dan vida a tu proyecto. 
+                                Realizamos grabación, edición, masterización y restauración de audio para videos, podcasts, 
+                                publicidad y animación. Nuestro objetivo es ofrecer una experiencia auditiva envolvente 
+                                y profesional.
+                            </p>
+                            <img src="img/ScreenshotAudEd.png" class="extra-img" alt="Estudio de grabación">
+                            <img src="img/ScreenshotAudEd2.png" class="extra-img" alt="Producción de sonido profesional">
+                            <a href="contactanos.html">
+                                <p class="indicative">Consulta más sobre este servicio en <b>"Contáctanos"</b>.</p>
+                            </a>
+                        </div>
+                        <button class="btn btn-primary" onclick="toggleExtraInfo('info2')">Leer más</button>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-image-container">
+                        <img src="img/ScreenshotAnim1.png" class="news-img" alt="Diseño y animación 2D">
+                    </div>
+                    <div class="news-content">
+                        <h5 class="news-title">Diseño y animación de personajes 2D</h5>
+                        <p class="news-text"><b>Damos vida a tus ideas con movimiento y personalidad.</b></p>
+                        <div class="extra-info" id="info3">
+                            <p class="news-text">
+                                Creamos personajes 2D desde su concepción visual hasta su animación final. 
+                                Nuestro proceso combina ilustración digital, diseño expresivo y animación 
+                                fluida para proyectos educativos, promocionales o narrativos. Ideal para videos explicativos, 
+                                cortometrajes o redes sociales.
+                            </p>
+                            <img src="img/ScreenshotAnim1.png" class="extra-img" alt="Animación 2D de personajes">
+                            <img src="img/ScreenshotAnim2.jpg" class="extra-img" alt="Sketch">
+                            <a href="contactanos.html">
+                                <p class="indicative">Solicita una animación personalizada desde <b>"Contáctanos"</b>.</p>
+                            </a>
+                        </div>
+                        <button class="btn btn-primary" onclick="toggleExtraInfo('info3')">Leer más</button>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-image-container">
+                        <img src="img/Screenshot3D1.jpg" class="news-img" alt="Modelado 3D y animación">
+                    </div>
+                    <div class="news-content">
+                        <h5 class="news-title">Modelado 3D y animación</h5>
+                        <p class="news-text"><b>Modelos y escenas tridimensionales realistas y detalladas.</b></p>
+                        <div class="extra-info" id="info4">
+                            <p class="news-text">
+                                Desarrollamos modelos 3D para animaciones, publicidad y visualización de productos. 
+                                Desde el modelado y texturizado hasta la iluminación y renderizado, 
+                                ofrecemos resultados realistas que realzan la presentación visual de tus ideas.
+                            </p>
+                            <img src="img/Screenshot3D1.jpg" class="extra-img" alt="Modelado 3D profesional">
+                            <img src="img/Screenshot3D2.png" class="extra-img" alt="Renderizado low-poly">
+                            <a href="contactanos.html">
+                                <p class="indicative">Descubre más sobre este servicio en <b>"Contáctanos"</b>.</p>
+                            </a>
+                        </div>
+                        <button class="btn btn-primary" onclick="toggleExtraInfo('info4')">Leer más</button>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-image-container">
+                        <img src="img/ScreenshotMod3D.png" class="news-img" alt="Impresión 3D y modelado">
+                    </div>
+                    <div class="news-content">
+                        <h5 class="news-title">Impresión, tallado y modelado para impresión 3D</h5>
+                        <p class="news-text"><b>Del diseño digital a la pieza física con precisión y detalle.</b></p>
+                        <div class="extra-info" id="info5">
+                            <p class="news-text">
+                                Ofrecemos servicios de modelado, escultura digital e impresión 3D para prototipos, 
+                                maquetas o piezas personalizadas. Utilizamos software de modelado de alta precisión 
+                                y materiales resistentes, logrando resultados funcionales y estéticamente atractivos.
+                            </p>
+                            <img src="img/ScreenshotMod3D.png" class="extra-img" alt="Modelo 3D impreso">
+                            <img src="img/ScreenshotMod2.jpg" class="extra-img" alt="Escultura digital 3D">
+                            <a href="contactanos.html">
+                                <p class="indicative">Solicita tu impresión personalizada en <b>"Contáctanos"</b>.</p>
+                            </a>
+                        </div>
+                        <button class="btn btn-primary" onclick="toggleExtraInfo('info5')">Leer más</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer-custom">
+    <div class="container">
+        <div class="row">
+            <!-- Redes Sociales -->
+            <div class="col">
+                <h5>Redes Sociales</h5>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="https://www.linkedin.com/in/elian-rodriguez-544786384/">
+                            <img src="img/social_LinkedIn.png" alt="LinkedIn">
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/erdz.designs/">
+                            <img src="img/social_instagram.png" alt="Instagram">
+                            Instagram
+                        </a>
+                    </li>
+                </ul>
+                <ul class="footer-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="nosotros.html">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="portafolio.html">Portafolio de Servicios</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="testimonio.html">Testimonio de clientes</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contactanos.html">Contáctanos</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Leyenda -->
+        <div class="row">
+            <div class="col text-center">
+                <p>2025 Elián Rodríguez Diseño</p>
+            </div>
+        </div>
+    </div>
+    <br>
+</footer>
+
+
+<script src="js/portafolio.js"></script>
+<!--<link href="css/reset.css" rel="stylesheet">-->
+</body>
+</html>
