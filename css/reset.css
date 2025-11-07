@@ -1,0 +1,60 @@
+/* Establecer el box model en border-box para todos los elementos */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/*fuentes*/
+.Figtree {
+    font-family: "Figtree", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.Figtree {
+    font-family: "Figtree", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+/* Establecer el estilo de texto predeterminado */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Eliminar decoraciones de enlace */
+a {
+    text-decoration: none;
+    color: inherit; /* Heredar el color del texto del padre */
+    font-family: "Figtree", sans-serif;
+}
+
+/* Eliminar viñetas de lista */
+ul, ol {
+    list-style: none;
+}
+
+/* Eliminar márgenes y espaciado en elementos de lista */
+li {
+    font-family: "Figtree", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Eliminar estilos de texto predeterminados */
+p {
+    font-family: "Figtree", sans-serif;
+    margin: 0;
+}
+
+/* Eliminar decoraciones de encabezados */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+    font-family: "Figtree", sans-serif;
+}
+
+/* Establecer márgenes en elementos de encabezado */
+h1, h2, h3 {
+    margin-bottom: 10px;
+}
