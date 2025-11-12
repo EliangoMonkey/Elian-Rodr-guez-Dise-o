@@ -109,17 +109,16 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('resize', ajustarPosicionMenu);
     window.toggleExtraInfo = toggleExtraInfo;
 
-    // --- Aviso de cookies ---
-    if (!localStorage.getItem('cookies-accepted')) {
-        const cookieBanner = document.getElementById('cookie-banner');
-        if (cookieBanner) cookieBanner.style.display = 'block';
-    }
+    // --- Aviso de cookies (siempre visible en cada visita) ---
+    const cookieBanner = document.getElementById('cookie-banner');
+    if (cookieBanner) cookieBanner.style.display = 'block';
 
     const acceptBtn = document.getElementById('accept-cookies');
     if (acceptBtn) {
         acceptBtn.addEventListener('click', function () {
-            localStorage.setItem('cookies-accepted', 'true');
-            document.getElementById('cookie-banner').style.display = 'none';
+            // Animación suave antes de ocultar
+            cookieBanner.classList.add('oculto');
+            setTimeout(() => cookieBanner.style.display = 'none', 400);
         });
     }
 });
