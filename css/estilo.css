@@ -424,11 +424,11 @@ h5 {
     justify-content: center;
     flex-wrap: wrap;
 }
-
 .footer-custom .list-inline-item {
-    margin: 10px 40px;
-    text-align: center;
+  margin: 0 12px; /* separa horizontalmente los íconos o botones */
+    display: flex;
 }
+
 
 .footer-custom .list-inline-item img {
     width: 40px;
@@ -756,3 +756,4 @@ h5 {
     }
 
 }
+
