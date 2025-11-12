@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleBtn = document.querySelector('.menu-toggle');
     const redesFooter = document.querySelector('.footer-custom .list-inline');
 
-    // Crear contenedor para redes sociales debajo del nav
+    // Crear contenedor para redes sociales dentro del menú
     const redesDesplegable = document.createElement('div');
     redesDesplegable.classList.add('redes-desplegable');
     redesDesplegable.style.display = 'none';
-    nav.insertAdjacentElement('afterend', redesDesplegable);
+    navbarNav.insertAdjacentElement('beforeend', redesDesplegable);
 
     // Buscar el enlace de "Redes Sociales"
     const redesNavLink = Array.from(document.querySelectorAll('.navbar-nav .nav-link'))
@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (redesNavLink) {
         redesNavLink.addEventListener('click', function (event) {
             event.preventDefault();
-
             const visible = redesDesplegable.style.display === 'block';
             redesDesplegable.innerHTML = visible ? '' : redesFooter.outerHTML;
             redesDesplegable.style.display = visible ? 'none' : 'block';
@@ -44,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
             toggleBtn.style.marginLeft = '';
             navbarNav.style.display = '';
             navbarNav.classList.remove('menu-visible');
+            redesDesplegable.style.display = 'none';
         }
     }
 
@@ -57,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
-
                     const next = entry.target.nextElementSibling;
                     if (next && next.classList.contains('fade-in')) {
                         setTimeout(() => observer.observe(next), 150);
@@ -79,19 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const current = extraInfos[i];
             if (current.id === infoId) {
                 const isHidden = current.style.display === "none" || current.style.display === "";
-
                 if (isHidden) {
-                    // Oculta los demás
                     for (let j = 0; j < extraInfos.length; j++) {
                         extraInfos[j].style.display = "none";
                         extraInfos[j].style.height = 0;
                     }
-
-                    // Muestra este
                     current.style.display = "block";
                     current.style.height = current.scrollHeight + "px";
-
-                    // Hace scroll suave hacia el contenido
                     setTimeout(() => {
                         current.scrollIntoView({ behavior: "smooth", block: "center" });
                     }, 250);
@@ -112,38 +105,21 @@ document.addEventListener("DOMContentLoaded", function () {
         extraInfos[i].style.display = "none";
     }
 
-    // Ejecutar ajustes iniciales y en resize
     ajustarPosicionMenu();
     window.addEventListener('resize', ajustarPosicionMenu);
-
-    // Hacer la función accesible globalmente
     window.toggleExtraInfo = toggleExtraInfo;
 
-    // --- AVISO DE COOKIES ---
-    // Crear el banner dinámicamente (por si no está en el HTML)
-    const cookieBanner = document.createElement('div');
-    cookieBanner.id = 'cookie-banner';
-    cookieBanner.classList.add('cookie-banner');
-    cookieBanner.innerHTML = `
-        <div class="cookie-content">
-            <p>Este sitio utiliza cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra 
-            <a href="#">Política de Privacidad</a>.</p>
-            <button id="accept-cookies" class="btn btn-primary">Aceptar</button>
-        </div>
-    `;
-    document.body.appendChild(cookieBanner);
-
-    // Mostrar el banner si no se ha aceptado antes
+    // --- Aviso de cookies ---
     if (!localStorage.getItem('cookies-accepted')) {
-        cookieBanner.style.display = 'block';
+        const cookieBanner = document.getElementById('cookie-banner');
+        if (cookieBanner) cookieBanner.style.display = 'block';
     }
 
-    // Botón para aceptar cookies
     const acceptBtn = document.getElementById('accept-cookies');
-    acceptBtn.addEventListener('click', function () {
-        localStorage.setItem('cookies-accepted', 'true');
-        cookieBanner.style.display = 'none';
-    });
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+            localStorage.setItem('cookies-accepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+    }
 });
-
-
