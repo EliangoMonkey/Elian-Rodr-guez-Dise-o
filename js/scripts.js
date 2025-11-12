@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleBtn = document.querySelector('.menu-toggle');
     const redesFooter = document.querySelector('.footer-custom .list-inline');
 
-    // Crear contenedor para redes sociales dentro del menú
+    // Crear contenedor para redes sociales debajo del nav
     const redesDesplegable = document.createElement('div');
     redesDesplegable.classList.add('redes-desplegable');
     redesDesplegable.style.display = 'none';
-    navbarNav.insertAdjacentElement('beforeend', redesDesplegable);
+    nav.insertAdjacentElement('afterend', redesDesplegable);
 
     // Buscar el enlace de "Redes Sociales"
     const redesNavLink = Array.from(document.querySelectorAll('.navbar-nav .nav-link'))
@@ -19,8 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (redesNavLink) {
         redesNavLink.addEventListener('click', function (event) {
             event.preventDefault();
+
             const visible = redesDesplegable.style.display === 'block';
-            redesDesplegable.innerHTML = visible ? '' : redesFooter.outerHTML;
+            // 🔧 Protección si redesFooter no existe aún
+            redesDesplegable.innerHTML = visible ? '' : (redesFooter ? redesFooter.outerHTML : '');
             redesDesplegable.style.display = visible ? 'none' : 'block';
         });
     }
@@ -43,11 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
             toggleBtn.style.marginLeft = '';
             navbarNav.style.display = '';
             navbarNav.classList.remove('menu-visible');
-            redesDesplegable.style.display = 'none';
         }
     }
 
-    // --- Efecto fade-in con scroll ---
+    // --- Efecto fade-in con scroll (para sección Nosotros y otras) ---
     const fadeElements = document.querySelectorAll('.fade-in');
     if (fadeElements.length > 0) fadeElements[0].classList.add('visible');
 
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
+
                     const next = entry.target.nextElementSibling;
                     if (next && next.classList.contains('fade-in')) {
                         setTimeout(() => observer.observe(next), 150);
@@ -78,13 +80,19 @@ document.addEventListener("DOMContentLoaded", function () {
             const current = extraInfos[i];
             if (current.id === infoId) {
                 const isHidden = current.style.display === "none" || current.style.display === "";
+
                 if (isHidden) {
+                    // Oculta los demás
                     for (let j = 0; j < extraInfos.length; j++) {
                         extraInfos[j].style.display = "none";
                         extraInfos[j].style.height = 0;
                     }
+
+                    // Muestra este
                     current.style.display = "block";
                     current.style.height = current.scrollHeight + "px";
+
+                    // Hace scroll suave hacia el contenido
                     setTimeout(() => {
                         current.scrollIntoView({ behavior: "smooth", block: "center" });
                     }, 250);
@@ -105,8 +113,11 @@ document.addEventListener("DOMContentLoaded", function () {
         extraInfos[i].style.display = "none";
     }
 
+    // Ejecutar ajustes iniciales y en resize
     ajustarPosicionMenu();
     window.addEventListener('resize', ajustarPosicionMenu);
+
+    // Hacer la función accesible globalmente
     window.toggleExtraInfo = toggleExtraInfo;
 
     // --- Aviso de cookies (siempre visible en cada visita) ---
@@ -116,9 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const acceptBtn = document.getElementById('accept-cookies');
     if (acceptBtn) {
         acceptBtn.addEventListener('click', function () {
-            // Animación suave antes de ocultar
-            cookieBanner.classList.add('oculto');
-            setTimeout(() => cookieBanner.style.display = 'none', 400);
+            cookieBanner.style.display = 'none';
         });
     }
 });
