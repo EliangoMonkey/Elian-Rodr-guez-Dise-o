@@ -446,6 +446,75 @@ h5 {
     padding: 0;
 }
 
+/* --- Aviso de Cookies --- */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(17, 17, 17, 0.95);
+  color: #e4e4e4;
+  font-family: "Figtree", sans-serif;
+  display: none; /* Se muestra con JS si no está aceptado */
+  z-index: 2000;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.4);
+  animation: slideUp 0.6s ease forwards;
+}
+
+.cookie-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 15px 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.cookie-text {
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: left;
+  flex: 1 1 65%;
+}
+
+.cookie-text a {
+  color: #ffcc00;
+  text-decoration: underline;
+}
+
+.cookie-banner .btn-primary {
+  background-color: #e4e4e4;
+  color: #111;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 25px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cookie-banner .btn-primary:hover {
+  background-color: #f4fda8;
+  transform: scale(1.05);
+}
+
+/* --- Animación del banner --- */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* --- Responsivo --- */
 @media (max-width: 992px) {
     .news-container {
@@ -561,6 +630,21 @@ h5 {
         width: 45%;
         height: 45vw; /* cuadrado adaptable */
     }
+      .cookie-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .cookie-text {
+    font-size: 0.95em;
+    flex: 1 1 100%;
+  }
+
+  .cookie-banner .btn-primary {
+    width: 100%;
+    max-width: 300px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -615,7 +699,10 @@ h5 {
         font-size: 1em;
     }
 }
-
+@media (max-width: 480px) {
+  .cookie-text {
+    font-size: 0.9em;
+  }
 /* --- Animación del menú --- */
 @keyframes fadeInDown {
     from {
@@ -667,4 +754,5 @@ h5 {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
