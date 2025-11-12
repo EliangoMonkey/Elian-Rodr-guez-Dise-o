@@ -118,4 +118,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hacer la función accesible globalmente
     window.toggleExtraInfo = toggleExtraInfo;
+
+    // --- AVISO DE COOKIES ---
+    // Crear el banner dinámicamente (por si no está en el HTML)
+    const cookieBanner = document.createElement('div');
+    cookieBanner.id = 'cookie-banner';
+    cookieBanner.classList.add('cookie-banner');
+    cookieBanner.innerHTML = `
+        <div class="cookie-content">
+            <p>Este sitio utiliza cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra 
+            <a href="#">Política de Privacidad</a>.</p>
+            <button id="accept-cookies" class="btn btn-primary">Aceptar</button>
+        </div>
+    `;
+    document.body.appendChild(cookieBanner);
+
+    // Mostrar el banner si no se ha aceptado antes
+    if (!localStorage.getItem('cookies-accepted')) {
+        cookieBanner.style.display = 'block';
+    }
+
+    // Botón para aceptar cookies
+    const acceptBtn = document.getElementById('accept-cookies');
+    acceptBtn.addEventListener('click', function () {
+        localStorage.setItem('cookies-accepted', 'true');
+        cookieBanner.style.display = 'none';
+    });
 });
+
+
