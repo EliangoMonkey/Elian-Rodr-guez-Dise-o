@@ -48,28 +48,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // --- Efecto fade-in con scroll (para sección Nosotros y otras) ---
-    const fadeElements = document.querySelectorAll('.fade-in');
-    if (fadeElements.length > 0) fadeElements[0].classList.add('visible');
-
-    const appearOnScroll = new IntersectionObserver(
-        (entries, observer) => {
+        // --- Efecto fade-in con scroll (para todos los elementos .fade-in) ---
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const appearOnScroll = new IntersectionObserver(
+          (entries, observer) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-
-                    const next = entry.target.nextElementSibling;
-                    if (next && next.classList.contains('fade-in')) {
-                        setTimeout(() => observer.observe(next), 150);
-                    }
-                }
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
             });
-        },
-        { threshold: 0.3 }
-    );
-
-    if (fadeElements.length > 0) appearOnScroll.observe(fadeElements[0]);
+          },
+          { threshold: 0.3 }
+        );
+        
+        // Observar todos los elementos con clase .fade-in
+        fadeElements.forEach(el => appearOnScroll.observe(el));
 
     // --- Secciones desplegables ("Leer más") ---
     function toggleExtraInfo(infoId) {
@@ -131,3 +126,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
