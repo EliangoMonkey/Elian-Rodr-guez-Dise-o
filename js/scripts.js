@@ -15,8 +15,6 @@ if (nav) nav.insertAdjacentElement('afterend', redesDesplegable);
 const redesNavLink = Array.from(document.querySelectorAll('.navbar-nav .nav-link'))
     .find(link => link.textContent.trim().toLowerCase().includes('redes'));
 
-console.log('[init] redesNavLink ->', !!redesNavLink);
-
 if (redesNavLink) {
     redesNavLink.addEventListener('click', function (event) {
         event.preventDefault();
@@ -25,19 +23,26 @@ if (redesNavLink) {
         const visible = redesDesplegable.style.display === 'block';
 
         if (!visible) {
+
+            redesDesplegable.innerHTML = '';
+
             if (redesFooter) {
-                redesDesplegable.innerHTML = `
-                    <div class="redes-wrapper" style="max-width:1200px;margin:auto;">
-                        ${redesFooter.outerHTML}
-                    </div>
-                `;
+                // ✨ CLON REAL, NO MOVER EL FOOTER
+                const redesClon = redesFooter.cloneNode(true);
+                const wrapper = document.createElement('div');
+                wrapper.classList.add('redes-wrapper');
+                wrapper.style.maxWidth = '1200px';
+                wrapper.style.margin = 'auto';
+
+                wrapper.appendChild(redesClon);
+                redesDesplegable.appendChild(wrapper);
             }
+
             redesDesplegable.style.display = 'block';
+
         } else {
             redesDesplegable.innerHTML = '';
             redesDesplegable.style.display = 'none';
         }
-
-        console.log('[redes] toggle ->', !visible);
     });
 }
