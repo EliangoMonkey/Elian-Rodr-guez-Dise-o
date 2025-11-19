@@ -12,12 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para colocar correctamente el contenedor según el tamaño
     function ubicarRedesContainer() {
-    // SIEMPRE colocar las redes justo después del NAV
-    nav.insertAdjacentElement('afterend', redesDesplegable);
+        nav.insertAdjacentElement('afterend', redesDesplegable);
     }
 
-
-    // Ejecutar ubicación inicial
     ubicarRedesContainer();
     window.addEventListener('resize', ubicarRedesContainer);
 
@@ -25,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const redesNavLink = Array.from(document.querySelectorAll('.navbar-nav .nav-link'))
         .find(link => link.textContent.trim().toLowerCase().includes('redes'));
 
-    // Al hacer clic en "Redes Sociales"
     if (redesNavLink) {
         redesNavLink.addEventListener('click', function (event) {
             event.preventDefault();
@@ -55,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         navbarNav.classList.toggle('menu-visible');
     });
 
-    // Ajuste de posición del botón
+    // Ajuste de posición del menú
     function ajustarPosicionMenu() {
         if (window.innerWidth <= 768) {
             nav.style.display = 'flex';
@@ -69,6 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
             navbarNav.classList.remove('menu-visible');
         }
     }
+    ajustarPosicionMenu();
+    window.addEventListener('resize', ajustarPosicionMenu);
 
     // --- Efecto fade-in con scroll ---
     const fadeElements = document.querySelectorAll('.fade-in');
@@ -90,14 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         { threshold: 0.3 }
     );
-
     if (fadeElements.length > 0) appearOnScroll.observe(fadeElements[0]);
 
     // --- "Leer más" ---
     function toggleExtraInfo(infoId) {
-        const info = document.getElementById(infoId);
         const extraInfos = document.getElementsByClassName('extra-info');
-
         for (let i = 0; i < extraInfos.length; i++) {
             const current = extraInfos[i];
             if (current.id === infoId) {
@@ -126,14 +121,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Ocultar extras al inicio
     const extraInfos = document.getElementsByClassName('extra-info');
     for (let i = 0; i < extraInfos.length; i++) {
         extraInfos[i].style.display = "none";
     }
-
-    ajustarPosicionMenu();
-    window.addEventListener('resize', ajustarPosicionMenu);
-
     window.toggleExtraInfo = toggleExtraInfo;
+
+    // --- Banner de Cookies siempre visible ---
+    const cookieBanner = document.getElementById("cookie-banner");
+    const acceptCookiesBtn = document.getElementById("accept-cookies");
+
+    // Mostrar siempre al cargar
+    cookieBanner.classList.add("show");
+
+    // Cerrar banner temporalmente al hacer clic
+    acceptCookiesBtn.addEventListener("click", function () {
+        cookieBanner.classList.remove("show"); // Fade-out temporal
+    });
 });
