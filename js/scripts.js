@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
 
             const visible = redesDesplegable.style.display === 'block';
-            // 🔧 Protección si redesFooter no existe aún
             redesDesplegable.innerHTML = visible ? '' : (redesFooter ? redesFooter.outerHTML : '');
             redesDesplegable.style.display = visible ? 'none' : 'block';
         });
@@ -48,23 +47,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-        // --- Efecto fade-in con scroll (para todos los elementos .fade-in) ---
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const appearOnScroll = new IntersectionObserver(
-          (entries, observer) => {
+    // --- Efecto fade-in SECUENCIAL (como en sección Nosotros) ---
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    if (fadeElements.length > 0) fadeElements[0].classList.add('visible');
+
+    const appearOnScroll = new IntersectionObserver(
+        (entries, observer) => {
             entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-              }
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+
+                    const next = entry.target.nextElementSibling;
+                    if (next && next.classList.contains('fade-in')) {
+                        setTimeout(() => observer.observe(next), 150);
+                    }
+                }
             });
-          },
-          { threshold: 0.3 }
-        );
-        
-        // Observar todos los elementos con clase .fade-in
-        fadeElements.forEach(el => appearOnScroll.observe(el));
+        },
+        { threshold: 0.3 }
+    );
+
+    if (fadeElements.length > 0) appearOnScroll.observe(fadeElements[0]);
 
     // --- Secciones desplegables ("Leer más") ---
     function toggleExtraInfo(infoId) {
@@ -115,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hacer la función accesible globalmente
     window.toggleExtraInfo = toggleExtraInfo;
 
-    // --- Aviso de cookies (siempre visible en cada visita) ---
+    // --- Aviso de cookies (siempre visible) ---
     const cookieBanner = document.getElementById('cookie-banner');
     if (cookieBanner) cookieBanner.style.display = 'block';
 
@@ -126,4 +131,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-
