@@ -5,11 +5,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const toggleBtn = document.querySelector('.menu-toggle');
     const redesFooter = document.querySelector('.footer-custom .list-inline');
 
-    // Crear contenedor para redes sociales debajo del nav
+    // Crear contenedor para redes sociales
     const redesDesplegable = document.createElement('div');
     redesDesplegable.classList.add('redes-desplegable');
     redesDesplegable.style.display = 'none';
+
+    // Función para colocar correctamente el contenedor según el tamaño
+    function ubicarRedesContainer() {
+    // SIEMPRE colocar las redes justo después del NAV
     nav.insertAdjacentElement('afterend', redesDesplegable);
+    }
+
+
+    // Ejecutar ubicación inicial
+    ubicarRedesContainer();
+    window.addEventListener('resize', ubicarRedesContainer);
 
     // Buscar el enlace de "Redes Sociales"
     const redesNavLink = Array.from(document.querySelectorAll('.navbar-nav .nav-link'))
@@ -21,8 +31,21 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
 
             const visible = redesDesplegable.style.display === 'block';
-            redesDesplegable.innerHTML = visible ? '' : redesFooter.outerHTML;
-            redesDesplegable.style.display = visible ? 'none' : 'block';
+
+            if (visible) {
+                redesDesplegable.innerHTML = '';
+                redesDesplegable.style.display = 'none';
+            } else {
+                const clon = redesFooter.cloneNode(true);
+                clon.style.display = 'flex';
+                clon.style.flexDirection = 'row';
+                clon.style.justifyContent = 'center';
+                clon.style.gap = '15px';
+
+                redesDesplegable.innerHTML = '';
+                redesDesplegable.appendChild(clon);
+                redesDesplegable.style.display = 'block';
+            }
         });
     }
 
@@ -70,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (fadeElements.length > 0) appearOnScroll.observe(fadeElements[0]);
 
-    // --- Secciones desplegables ("Leer más") ---
+    // --- "Leer más" ---
     function toggleExtraInfo(infoId) {
         const info = document.getElementById(infoId);
         const extraInfos = document.getElementsByClassName('extra-info');
@@ -81,17 +104,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 const isHidden = current.style.display === "none" || current.style.display === "";
 
                 if (isHidden) {
-                    // Oculta los demás
                     for (let j = 0; j < extraInfos.length; j++) {
                         extraInfos[j].style.display = "none";
                         extraInfos[j].style.height = 0;
                     }
 
-                    // Muestra este
                     current.style.display = "block";
                     current.style.height = current.scrollHeight + "px";
 
-                    // Hace scroll suave hacia el contenido
                     setTimeout(() => {
                         current.scrollIntoView({ behavior: "smooth", block: "center" });
                     }, 250);
@@ -106,16 +126,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Inicializar ocultando todas las secciones extra
+    // Ocultar extras al inicio
     const extraInfos = document.getElementsByClassName('extra-info');
     for (let i = 0; i < extraInfos.length; i++) {
         extraInfos[i].style.display = "none";
     }
 
-    // Ejecutar ajustes iniciales y en resize
     ajustarPosicionMenu();
     window.addEventListener('resize', ajustarPosicionMenu);
 
-    // Hacer la función accesible globalmente
     window.toggleExtraInfo = toggleExtraInfo;
 });
