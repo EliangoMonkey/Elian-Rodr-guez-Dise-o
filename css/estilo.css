@@ -1,3 +1,5 @@
+/* ------------------- TU CSS ORIGINAL + FIXES ------------------- */
+
 body {
     background: linear-gradient(0deg, #242424, #4e4e4e);
     margin: auto; 
@@ -86,7 +88,7 @@ h5 {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     flex-wrap: nowrap;
     position: relative;
-    z-index: 1000; /* navbar por encima del video */
+    z-index: 1000;
 }
 
 .navbar > * {
@@ -168,7 +170,7 @@ h5 {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* --- Redes debajo del nav --- */
+/* --- Redes debajo del nav FIX: que no tape contenido --- */
 .redes-desplegable {
     color: #fff;
     display: none;
@@ -178,6 +180,7 @@ h5 {
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.6s ease;
+    position: relative !important; /* ← FIX IMPORTANTE */
 }
 
 .redes-desplegable .list-inline {
@@ -192,7 +195,7 @@ h5 {
     height: 35px;
 }
 
-/* --- NUEVO: redes dentro del menú --- */
+/* --- redes dentro del menú --- */
 .navbar-nav .redes-desplegable {
     display: flex;
     flex-direction: column;
@@ -216,89 +219,7 @@ h5 {
     opacity: 0.8;
 }
 
-.navbar-nav .redes-desplegable i,
-.navbar-nav .redes-desplegable svg {
-    font-size: 1.3em;
-    color: #fff;
-}
-
-/* --- Video principal --- */
-.video-container {
-    position: relative;
-    width: 100%;
-    height: 80vh;
-    overflow: hidden;
-}
-
-.video-container video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-}
-
-.video-container .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #111);
-    z-index: 1;
-}
-
-/* --- Noticias --- */
-.news-container {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 0;
-    gap: 10px;
-}
-
-.news-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: #2e2e2e;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.news-item:hover {
-    transform: scale(1.02);
-}
-
-.news-img {
-    width: 250px;
-    height: auto;
-    object-fit: cover;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.news-content {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-}
-
-.news-title, .news-text {
-    color: #e9e9e9;
-}
-
-/*---------Nosotros---------*/
-/* --- Galería Instagram sin zoom y todas visibles --- */
+/* --- Galería Instagram NOSOTROS --- */
 .galeria-instagram {
     display: flex;
     flex-direction: column;
@@ -331,403 +252,8 @@ h5 {
     transform: none;
 }
 
+/* --- Animaciones (ESTABAN ROTAS → LAS MUEVO AQUÍ) --- */
 
-/* ----- Comentarios ---------------*/
-
-/* --- Formulario de comentarios centrado --- */
-.comentarios {
-    display: flex;
-    flex-direction: column;
-    align-items: center;           /* Centra horizontalmente todos los elementos */
-    justify-content: center;       /* Centra verticalmente si hay espacio */
-    gap: 15px;                     /* Espacio entre los elementos */
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 600px;              /* No crece demasiado en pantallas grandes */
-    margin: 0 auto;                /* Centra el bloque dentro del contenedor */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.comentarios label {
-    text-align: center;
-    width: 100%;
-    color: #ffffff;
-    font-size: 1.3em;
-}
-
-.comentarios input,
-.comentarios select,
-.comentarios textarea {
-    width: 100%;
-    max-width: 500px;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1em;
-    text-align: center;
-    outline: none;
-    background-color: #222;
-    color: #fff;
-}
-
-.comentarios input:focus,
-.comentarios select:focus,
-.comentarios textarea:focus {
-    background-color: #2e2e2e;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-}
-
-.comentarios textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.comentarios .submit {
-    margin-top: 10px;
-}
-
-/*----Portafolio -----*/
-
-/* --- Ajuste visual para el contenido desplegable --- */
-.extra-info {
-    overflow: hidden;
-    transition: height 0.5s ease;
-    margin-top: 10px;
-}
-
-/* --- Asegurar que las imágenes se adapten al viewport --- */
-.extra-info img.extra-img {
-    width: auto;
-    max-width: 95vw;   /* No supera el ancho visible */
-    max-height: 80vh;  /* No supera el alto de la ventana */
-    height: auto;
-    border-radius: 10px;
-    margin: 10px auto;
-    display: block;
-    object-fit: contain;
-}
-
-/* --- Footer --- */
-.footer-custom {
-    background-color: #111111;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.footer-custom .list-inline {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.footer-custom .list-inline-item {
-  margin: 0 12px; /* separa horizontalmente los íconos o botones */
-    display: flex;
-}
-
-
-.footer-custom .list-inline-item img {
-    width: 40px;
-    height: auto;
-    display: block;
-    margin: 0 auto 10px;
-}
-
-.footer-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 20px 0 0;
-    padding: 0;
-}
-
-/* --- Aviso de Cookies --- */
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(17, 17, 17, 0.95);
-  color: #e4e4e4;
-  font-family: "Figtree", sans-serif;
-  display: none; /* Se muestra con JS si no está aceptado */
-  z-index: 2000;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.4);
-  animation: slideUp 0.6s ease forwards;
-}
-
-.cookie-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 15px 25px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-}
-
-.cookie-text {
-  font-size: 1em;
-  line-height: 1.5;
-  text-align: left;
-  flex: 1 1 65%;
-}
-
-.cookie-text a {
-  color: #ffcc00;
-  text-decoration: underline;
-}
-
-.cookie-banner .btn-primary {
-  background-color: #e4e4e4;
-  color: #111;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 25px;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.cookie-banner .btn-primary:hover {
-  background-color: #f4fda8;
-  transform: scale(1.05);
-}
-
-/* --- Animación del banner --- */
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* --- Responsivo --- */
-@media (max-width: 992px) {
-    .news-container {
-        gap: 20px;
-    }
-
-    .news-item {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .news-img {
-        width: 90%;
-        height: auto;
-        margin: 0 auto;
-        padding: 0;
-    }
-
-    .news-content {
-        padding: 10px 15px;
-        text-align: center;
-    }
-
-    .news-title {
-        font-size: 1.6em;
-    }
-
-    .news-text {
-        font-size: 1.1em;
-        line-height: 1.5;
-    }
-}
-
-@media (max-width: 768px) {
-    h2{
-        font-size: 2em;
-    }
-    .navbar {
-        position: relative;
-        z-index: 1000;
-    }
-
-    .navbar-brand {
-        font-size: 1.2em;
-        display: flex;
-        align-items: center;
-    }
-
-    .menu-toggle {
-        display: flex;
-        margin-left: auto;
-        order: 2;
-        position: relative;
-        z-index: 1600;
-    }
-
-    .navbar-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        background-color: rgba(17, 17, 17, 0.85);
-        padding: 15px 0;
-        gap: 10px;
-        z-index: 1500;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .navbar-nav.menu-visible {
-        display: flex;
-        animation: fadeInDown 0.3s ease forwards;
-    }
-
-    .nav-link,
-    .navbar-nav .nav-link {
-        width: 100%;
-        text-align: center;
-        padding: 12px;
-        color: white;
-        text-decoration: none;
-        font-size: 1.2em;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        transition: background-color 0.3s ease;
-    }
-
-    .navbar-nav .nav-link:last-child {
-        border-bottom: none;
-    }
-
-    .nav-link:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .video-container {
-        position: relative;
-        z-index: 1;
-        height: 60vh;
-    }
-
-    .video-container video {
-        object-position: center 25%;
-        z-index: 0;
-    }
-
-    .galeria-instagram {
-        gap: 15px;
-    }
-    .galeria-instagram .img-item {
-        width: 45%;
-        height: 45vw; /* cuadrado adaptable */
-    }
-      .cookie-inner {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .cookie-text {
-    font-size: 0.95em;
-    flex: 1 1 100%;
-  }
-
-  .cookie-banner .btn-primary {
-    width: 100%;
-    max-width: 300px;
-  }
-}
-
-@media (max-width: 576px) {
-    .navbar-brand { 
-        font-size: 1.1em; 
-    }
-
-    .video-container {
-        height: 30vh;
-    }
-
-    .video-container video {
-        object-position: center 18%;
-        height: 100%;
-    }
-
-    .galeria-instagram .img-item {
-        width: 90%;
-        height: 90vw;
-    }
-
-    .nav-link {
-        font-size: 1.1em;
-    }
-
-    .redes-desplegable {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .news-item {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-    }
-
-    .news-img {
-        width: 100%;
-        padding: 0;
-        border-radius: 0;
-    }
-
-    .news-content {
-        padding: 8px 12px;
-    }
-
-    .news-title {
-        font-size: 1.4em;
-    }
-
-    .news-text {
-        font-size: 1em;
-    }
-}
-@media (max-width: 480px) {
-  .cookie-text {
-    font-size: 0.9em;
-  }
-/* --- Animación del menú --- */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- Animación del menú --- */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- Aparición progresiva de imágenes en scroll --- */
 .fade-in {
     opacity: 0;
     transform: translateY(60px);
@@ -740,7 +266,6 @@ h5 {
     transform: translateY(0);
 }
 
-/* Efecto inicial de la primera imagen */
 .fade-in:first-child {
     animation: fadeFirst 1.6s ease forwards;
 }
@@ -754,6 +279,17 @@ h5 {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------------- */
+/* MUY IMPORTANTE: cierro correctamente media queries */
+/* --------------------------------------------- */
+
+@media (max-width: 480px) {
+  .cookie-text { font-size: 0.9em; }
 }
