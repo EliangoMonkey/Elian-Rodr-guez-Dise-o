@@ -86,7 +86,7 @@ h5 {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     flex-wrap: nowrap;
     position: relative;
-    z-index: 1000; /* navbar por encima del video */
+    z-index: 1000;
 }
 
 .navbar > * {
@@ -168,7 +168,7 @@ h5 {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* --- Redes debajo del nav --- */
+/* --- Redes debajo del nav (vista escritorio) --- */
 .redes-desplegable {
     color: #fff;
     display: none;
@@ -178,6 +178,12 @@ h5 {
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.6s ease;
+
+    /* --- FIX redes debajo del menú móvil --- */
+    width: 100%;
+    background: #111;
+    position: relative;
+    z-index: 999;
 }
 
 .redes-desplegable .list-inline {
@@ -192,7 +198,7 @@ h5 {
     height: 35px;
 }
 
-/* --- NUEVO: redes dentro del menú --- */
+/* --- Redes dentro del menú --- */
 .navbar-nav .redes-desplegable {
     display: flex;
     flex-direction: column;
@@ -298,7 +304,6 @@ h5 {
 }
 
 /*---------Nosotros---------*/
-/* --- Galería Instagram sin zoom y todas visibles --- */
 .galeria-instagram {
     display: flex;
     flex-direction: column;
@@ -326,27 +331,23 @@ h5 {
     object-fit: cover;
 }
 
-/* Quitar zoom en hover */
 .img-full:hover img {
     transform: none;
 }
 
-
 /* ----- Comentarios ---------------*/
-
-/* --- Formulario de comentarios centrado --- */
 .comentarios {
     display: flex;
     flex-direction: column;
-    align-items: center;           /* Centra horizontalmente todos los elementos */
-    justify-content: center;       /* Centra verticalmente si hay espacio */
-    gap: 15px;                     /* Espacio entre los elementos */
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
     background-color: rgba(255, 255, 255, 0.05);
     padding: 30px;
     border-radius: 15px;
     width: 90%;
-    max-width: 600px;              /* No crece demasiado en pantallas grandes */
-    margin: 0 auto;                /* Centra el bloque dentro del contenedor */
+    max-width: 600px;
+    margin: 0 auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -389,19 +390,16 @@ h5 {
 }
 
 /*----Portafolio -----*/
-
-/* --- Ajuste visual para el contenido desplegable --- */
 .extra-info {
     overflow: hidden;
     transition: height 0.5s ease;
     margin-top: 10px;
 }
 
-/* --- Asegurar que las imágenes se adapten al viewport --- */
 .extra-info img.extra-img {
     width: auto;
-    max-width: 95vw;   /* No supera el ancho visible */
-    max-height: 80vh;  /* No supera el alto de la ventana */
+    max-width: 95vw;
+    max-height: 80vh;
     height: auto;
     border-radius: 10px;
     margin: 10px auto;
@@ -559,7 +557,27 @@ h5 {
     }
     .galeria-instagram .img-item {
         width: 45%;
-        height: 45vw; /* cuadrado adaptable */
+        height: 45vw;
+    }
+
+    /* --- FIX: redes debajo del menú hamburguesa --- */
+    .navbar-nav.menu-visible + .redes-desplegable {
+        position: relative;
+        display: block !important;
+        top: 0;
+        z-index: 1499;
+        background: #111;
+        padding: 15px 0;
+    }
+
+    .redes-desplegable {
+        position: relative;
+        z-index: 1600 !important; /* MÁS ALTO QUE EL MENÚ */
+        background: #111;
+        display: flex;
+        padding: 15px 0;
+        width: 100%;
+    
     }
 }
 
@@ -628,7 +646,6 @@ h5 {
     }
 }
 
-/* --- Animación del menú --- */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -668,3 +685,4 @@ h5 {
         transform: translateY(0);
     }
 }
+
