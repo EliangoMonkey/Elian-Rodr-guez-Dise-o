@@ -406,6 +406,26 @@ h5 {
     display: block;
     object-fit: contain;
 }
+.payment-methods {
+    display: flex;
+    justify-content: center;
+    gap: 0; /* sin separación extra, ocupan un tercio cada uno */
+    flex-wrap: wrap; /* que se ajusten en móviles si hace falta */
+}
+
+.payment-item {
+    display: flex;
+    flex-direction: column; /* texto debajo de la imagen */
+    align-items: center;
+    width: 33.33%; /* ocupa un tercio del contenedor */
+    box-sizing: border-box; /* incluye padding si se agrega */
+}
+
+.payment-item img {
+    width: 50%; /* relativo al bloque, puedes ajustar */
+    height: auto;
+    margin-bottom: 5px; /* espacio entre imagen y texto */
+}
 
 /* --- Footer --- */
 .footer-custom {
